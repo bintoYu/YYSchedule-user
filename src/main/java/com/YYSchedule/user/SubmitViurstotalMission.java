@@ -74,11 +74,11 @@ public class SubmitViurstotalMission
 	public static void main(String[] args)
 	{
 		int userId = 1;
-		String missionName = "cuckoo";
+		String missionName = "virustest";
 		
 		List<String> fileList = new ArrayList<String>();
-		fileList.add("C:\\Users\\Administrator\\Downloads\\0f18f9e66ab8ada1951743d041b6e671.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1b207cc2246b05b8c67b46ce734b4074.exe");
+//		fileList.add("C:\\Users\\Administrator\\Downloads\\0f18f9e66ab8ada1951743d041b6e671.exe");
+//		fileList.add("C:\\Users\\Administrator\\Downloads\\1b207cc2246b05b8c67b46ce734b4074.exe");
 		fileList.add("C:\\Users\\Administrator\\Downloads\\431162a68b5d9516e912460650436ca9.exe");
 		fileList.add("C:\\Users\\Administrator\\Downloads\\43281a602b8eb048473771b0b0ff295f.exe");
 		

@@ -3,15 +3,10 @@
  */
 package com.YYSchedule.user;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.commons.net.ftp.FTPClient;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -22,23 +17,12 @@ import org.apache.thrift.transport.TTransportException;
 import com.YYSchedule.common.rpc.domain.job.Job;
 import com.YYSchedule.common.rpc.domain.job.JobPriority;
 import com.YYSchedule.common.rpc.domain.mission.Mission;
-import com.YYSchedule.common.rpc.domain.parameter.ContextParameter;
-import com.YYSchedule.common.rpc.domain.parameter.JobParameter;
 import com.YYSchedule.common.rpc.domain.task.TaskPhase;
 import com.YYSchedule.common.rpc.service.task.UserCallTaskService;
-import com.YYSchedule.store.exception.FtpException;
-import com.YYSchedule.store.ftp.FtpConnFactory;
-import com.YYSchedule.store.ftp.FtpUtils;
 
-/**
- * @author ybt
- * 
- * @date 2018年7月3日
- * @version 1.0
- */
-public class SubmitMission
+public class SubmitTestMission
 {
-	public static final String address = "192.168.101.29";
+	public static final String address = "192.168.100.29";
 	
 	private static UserCallTaskService.Client client;
 	
@@ -72,61 +56,59 @@ public class SubmitMission
 	 * @param args
 	 */
 	public static void main(String[] args)
-	{
+	{	
 		int userId = 1;
-		String missionName = "cuckoo";
+		String missionName = "test";
 		
 		List<String> fileList = new ArrayList<String>();
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\9f581811ca0f65e53ed687ef7fd6bc67.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1b207cc2246b05b8c67b46ce734b4074.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1a101ed73a058ce77e52e427e8c7858c.exe");
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\431162a68b5d9516e912460650436ca9.exe");
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\43281a602b8eb048473771b0b0ff295f.exe");
+		fileList.add("E:\\tmp\\test\\num\\num1.txt");
+		fileList.add("E:\\tmp\\test\\num\\num2.txt");
+		fileList.add("E:\\tmp\\test\\num\\num3.txt");
+		fileList.add("E:\\tmp\\test\\num\\num4.txt");
+		fileList.add("E:\\tmp\\test\\num\\num5.txt");
+		fileList.add("E:\\tmp\\test\\num\\num6.txt");
 		
 		List<Job> jobList = new ArrayList<Job>();
 		
-		// 生成cuckoo任务
-		int timeoutForCuckoo = 1800000;
-		LinkedHashMap<String, String> optionalParameterForCuckoo = new LinkedHashMap<>();
-		Job cuckooJob = SubmitUtil.getJob(TaskPhase.CUCKOO, JobPriority.MEDIUM, "sh", fileList,optionalParameterForCuckoo, timeoutForCuckoo,userId);
-		
-		// 生成Virustotal任务
-		int timeoutForVirustotal = 600000;
-		LinkedHashMap<String, String> optionalParameterForVirustotal = new LinkedHashMap<>();
-		Job virustotalJob = SubmitUtil.getJob(TaskPhase.VIRUSTOTAL, JobPriority.MEDIUM, "python", fileList,optionalParameterForVirustotal, timeoutForVirustotal,userId);
+		// 生成common任务
+		int timeout = 10*60*1000;
+		String runCommand = "java -jar";
+		LinkedHashMap<String, String> optionalParameter = new LinkedHashMap<>();
+		Job cuckooJob = SubmitUtil.getJob(TaskPhase.COMMON, JobPriority.MEDIUM, runCommand, fileList,optionalParameter, timeout,userId);
 		
 		jobList.add(cuckooJob);
-		jobList.add(virustotalJob);
+//		jobList.add(virustotalJob);
 		
-		SubmitMission submitMission = new SubmitMission();
-		long missionId = submitMission.submitMission(userId, missionName, fileList,jobList);
-		System.out.println(missionId);
+		SubmitTestMission mission = new SubmitTestMission();
+		mission.submitMission(userId, missionName, fileList,jobList);
 	}
 	
 
-	public long submitMission(int userId, String missionName, List<String> fileList,List<Job> jobList)
+	public void submitMission(int userId, String missionName, List<String> fileList,List<Job> jobList)
 	{
-		long missionId = 0;
 		Mission mission = new Mission();
 		mission.setUserId(userId);
 		mission.setMissionName(missionName);
+		
+		// 将文件上传到ftp上
 		
 		mission.setJobList(jobList);
 		
 		try
 		{
-			missionId = client.submitMission(mission);
+			client.submitMission(mission);
 		} catch (TException e)
 		{
 			e.printStackTrace();
 		}
-		
-		return missionId;
 	}
 	
 	
 	
-	public SubmitMission()
+	/**
+	 * 
+	 */
+	public SubmitTestMission()
 	{
 		TTransport transport = new TSocket(address, 6000);
 		try
@@ -139,6 +121,5 @@ public class SubmitMission
 		// 设置传输协议为TBinaryProtocol
 		TProtocol protocol = new TBinaryProtocol(transport);
 		client = new UserCallTaskService.Client(protocol);
-		
 	}
 }

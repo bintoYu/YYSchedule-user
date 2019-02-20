@@ -124,19 +124,16 @@ public class SubmitUtil
 		List<String> list = new ArrayList<>();
 		try {
 			FTPClient ftpClient = connFactory.connect();
-		
 
-			String path = "/newplatform/" + userId + "/" + job.getTaskPhase().toString();
+			String path = "newplatform/" + userId + "/" + job.getTaskPhase().toString();
 			for(String file : fileList)
 			{
-				FtpUtils.upload(ftpClient, file, path);
+				FtpUtils.upload(ftpClient, file, path, true);
 				
 				File localFile = new File(file);
 				String fileName = localFile.getName();
 				list.add(path + "/" + fileName);
 			}
-			
-			
 			ftpClient.disconnect();
 		} catch (FtpException e) {
 			e.printStackTrace();

@@ -106,7 +106,7 @@ public class FtpUtils
 	 * @return
 	 * @throws FtpException
 	 */
-	public static boolean upload(FTPClient ftpClient, String localFilePath, String remoteDirectory) throws FtpException
+	public static boolean upload(FTPClient ftpClient, String localFilePath, String remoteDirectory,boolean isReplace) throws FtpException
 	{
 		File localFile = new File(localFilePath);
 		String fileName = localFile.getName();
@@ -125,7 +125,12 @@ public class FtpUtils
 		
 		String remoteFilePath = validateFtpDirectory(ftpClient, PathUtils.formatPath4FTP(remoteDirectory)) + "/" + fileName;
 		try {
-			if (!isFileExist(ftpClient, fileName)) {
+			//if file exist in ftp and we choose to replace it,remove the old one and upload
+			if(isFileExist(ftpClient, fileName) && isReplace)
+			{
+				ftpClient.deleteFile(fileName);
+			}
+			if(!isFileExist(ftpClient, fileName)) {
 				isSucceed = ftpClient.storeFile(fileName, is);
 				if (!isSucceed) {
 					throw new FtpException("Failed to upload file to ftp server : " + ftpClient.getReplyCode() + ":aha~:" + ftpClient.getReplyString());
