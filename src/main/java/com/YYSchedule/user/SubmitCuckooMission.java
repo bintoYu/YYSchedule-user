@@ -38,7 +38,7 @@ import com.YYSchedule.store.ftp.FtpUtils;
  */
 public class SubmitCuckooMission
 {
-	public static final String address = "192.168.101.29";
+	public static final String address = "192.168.100.29";
 	
 	private static UserCallTaskService.Client client;
 	
@@ -78,8 +78,8 @@ public class SubmitCuckooMission
 		
 		List<String> fileList = new ArrayList<String>();
 //		fileList.add("C:\\Users\\Administrator\\Downloads\\9f581811ca0f65e53ed687ef7fd6bc67.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\0f18f9e66ab8ada1951743d041b6e671.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1a101ed73a058ce77e52e427e8c7858c.exe");
+		fileList.add("/Users/meow/Downloads/tengxuntm_downcc.zip");
+//		fileList.add("C:\\Users\\Administrator\\Downloads\\1a101ed73a058ce77e52e427e8c7858c.exe");
 //		fileList.add("C:\\Users\\Administrator\\Downloads\\431162a68b5d9516e912460650436ca9.exe");
 //		fileList.add("C:\\Users\\Administrator\\Downloads\\43281a602b8eb048473771b0b0ff295f.exe");
 		
