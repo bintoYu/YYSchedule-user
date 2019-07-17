@@ -38,7 +38,7 @@ import com.YYSchedule.store.ftp.FtpUtils;
  */
 public class SubmitMission
 {
-	public static final String address = "192.168.101.29";
+	public static final String address = "192.168.100.29";
 	
 	private static UserCallTaskService.Client client;
 	
@@ -77,11 +77,8 @@ public class SubmitMission
 		String missionName = "cuckoo";
 		
 		List<String> fileList = new ArrayList<String>();
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\9f581811ca0f65e53ed687ef7fd6bc67.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1b207cc2246b05b8c67b46ce734b4074.exe");
-		fileList.add("C:\\Users\\Administrator\\Downloads\\1a101ed73a058ce77e52e427e8c7858c.exe");
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\431162a68b5d9516e912460650436ca9.exe");
-//		fileList.add("C:\\Users\\Administrator\\Downloads\\43281a602b8eb048473771b0b0ff295f.exe");
+		fileList.add("/Users/meow/Downloads/a0c0070fad5eba55f66c50270cb93ff9.pdf");
+		fileList.add("/Users/meow/Downloads/860d16b2f5f67060711a3440ad38b56a.apk");
 		
 		List<Job> jobList = new ArrayList<Job>();
 		

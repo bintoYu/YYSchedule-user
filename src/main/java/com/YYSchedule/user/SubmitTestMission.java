@@ -22,7 +22,7 @@ import com.YYSchedule.common.rpc.service.task.UserCallTaskService;
 
 public class SubmitTestMission
 {
-	public static final String address = "192.168.3.239";
+	public static final String address = "192.168.100.29";
 	
 	private static UserCallTaskService.Client client;
 	
@@ -62,7 +62,8 @@ public class SubmitTestMission
 		
 		List<String> fileList = new ArrayList<String>();
 		fileList.add("/Users/meow/Downloads/a0c0070fad5eba55f66c50270cb93ff9.pdf");
-//		fileList.add("E:\\tmp\\test\\num\\num1.txt");
+		fileList.add("/Users/meow/Downloads/860d16b2f5f67060711a3440ad38b56a.apk");
+		fileList.add("/Users/meow/Downloads/4a59dfb25093243c7bfc2412f61bf4d3.apk");
 //		fileList.add("E:\\tmp\\test\\num\\num2.txt");
 //		fileList.add("E:\\tmp\\test\\num\\num3.txt");
 //		fileList.add("E:\\tmp\\test\\num\\num4.txt");

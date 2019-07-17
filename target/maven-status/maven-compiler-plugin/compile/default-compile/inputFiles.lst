@@ -24,6 +24,7 @@
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/common/rpc/exception/AuthenticationException.java
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/common/rpc/domain/task/TaskPhase.java
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/store/ftp/FtpConnFactory.java
+/Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/common/rpc/domain/user/User.java
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/user/SubmitViurstotalMission.java
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/common/rpc/domain/node/NodePayload.java
 /Users/meow/git/NewSchedule/YYSchedule-user/src/main/java/com/YYSchedule/common/rpc/exception/TimeoutException.java

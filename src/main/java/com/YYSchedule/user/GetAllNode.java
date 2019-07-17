@@ -25,7 +25,7 @@ import com.YYSchedule.common.rpc.service.task.UserCallTaskService;
  */
 public class GetAllNode
 {
-	public static final String address = "192.168.2.61";
+	public static final String address = "192.168.100.29";
 	
 	private static UserCallTaskService.Client client;
 	
